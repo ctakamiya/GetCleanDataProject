@@ -15,9 +15,10 @@ The **tidy_data_set.txt** has 4 features:
 measurement name used to calculate the average of this measurement of a certain 
 activity of a subject. There are 86 levels in this variable.
 
-**_avg\_value\_measurement_**: This value is the average of measurement of this activity and subject.
+**_avg\_value\_measurement_**: This value is the average of measurement of this 
+activity and subject.
 
-
+**_unit\_of\_value_**: Unit of value.  Categorical variable: "g" and "radians/seconds"
 
 # Levels of **_measurements_** variable:
 
@@ -100,11 +101,5 @@ activity of a subject. There are 86 levels in this variable.
 "fBodyBodyGyroJerkMag-mean()"         
 "fBodyBodyGyroJerkMag-std()"          
 "fBodyBodyGyroJerkMag-meanFreq()"      
-"angle(tBodyAccMean,gravity)"         
-"angle(tBodyAccJerkMean),gravityMean)" 
-"angle(tBodyGyroMean,gravityMean)"    
-"angle(tBodyGyroJerkMean,gravityMean)" 
-"angle(X,gravityMean)"                
-"angle(Y,gravityMean)"                
-"angle(Z,gravityMean)"                
+
  

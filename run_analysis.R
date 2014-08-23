@@ -69,9 +69,12 @@ featuresName <- read.csv("./UCI HAR Dataset/features.txt", header=FALSE,
                          sep=" ")
 measuresMean <- c( grep("mean", featuresName$V2, perl=TRUE, 
                         value = FALSE, ignore.case = TRUE)  )
+measuresMean2 <- c( grep ("Mean[\\)|,]", featuresName$V2, perl=TRUE,
+                        value=FALSE, ignore.case = TRUE))
 measuresStd <- c( grep("std", featuresName$V2, perl=TRUE, 
                        value = FALSE, ignore.case = TRUE)  )
-idx <- sort(c(measuresMean, measuresStd))
+
+idx <- sort(c(setdiff(measuresMean, measuresMean2), measuresStd))
 
 
 
@@ -115,8 +118,16 @@ varFactors <- list(as.factor(temp1$subject),
                    as.factor(temp1$variable))
 temp2 <- tapply(temp1$value, varFactors, mean)
 
-DataClean2 <- melt(temp2)
-names(DataClean2) <- c("subject", "activity", "measurement_name", "avg_value_measurement" )
-
+dataClean2 <- melt(temp2)
+names(dataClean2) <- c("subject", "activity", "measurement_name", "avg_value_measurement" )
+units <-  c(rep(0, dim(dataClean2)[1]))
+units[grep ("acc", dataClean2$measurement_name,perl=TRUE, 
+            value=FALSE, ignore.case=TRUE)] <- 1
+units[grep ("gyr", dataClean2$measurement_name,perl=TRUE, 
+            value=FALSE, ignore.case=TRUE)] <- 2
+unit <- factor(c("g", "radians/seconds"))
+unit_of_value <- unit[units]
+dataClean2 <- cbind(dataClean2, unit_of_value)
+        
 # Writting data to tidy_data_set.xt
-write.table(DataClean2, file="tidy_data_set.txt", row.names=FALSE)
+write.table(dataClean2, file="tidy_data_set.txt", row.names=FALSE)

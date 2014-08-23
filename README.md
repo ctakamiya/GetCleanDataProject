@@ -88,16 +88,20 @@ This is the last part of script responsible for create new data set with the
 average of each variable for each activity and each subject. To accomplish this 
 task, the fuction tapply is used. 
 
-The new data set is compound by subject,activity, name of  the measurements and 
-its average value.
+The new data set is compound by subject,activity, name of  the measurements, 
+its average value and unit
 
 For example, the first row in new data set:
 
-1 "LAYING" "tBodyAcc-mean()-X" 0.22159824394
+1 "LAYING" "tBodyAcc-mean()-X" 0.22159824394 "g"
 
 The meaning is: the subject is 1, his/her activity is "LAYING", the measurements
 is "tBodyAcc-mean()-X" and the value "0.22159824394" is the average of all value 
-in this measurement, in activity "LAYING" of subject "1".
+in this measurement, in activity "LAYING" of subject "1". The unit is "g"
+
+The generated new data set can be loaded with the following command:
+
+dataSet <- read.csv("tidy\_data\_set.txt", sep=" ")
 
 
 
