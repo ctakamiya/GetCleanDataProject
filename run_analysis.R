@@ -116,7 +116,7 @@ varFactors <- list(as.factor(temp1$subject),
 temp2 <- tapply(temp1$value, varFactors, mean)
 
 DataClean2 <- melt(temp2)
-names(DataClean2) <- c("subject", "activity", "meansurements", "mean" )
+names(DataClean2) <- c("subject", "activity", "measurement_name", "avg_value_measurement" )
 
 # Writting data to tidy_data_set.xt
 write.table(DataClean2, file="tidy_data_set.txt", row.names=FALSE)
