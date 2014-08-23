@@ -2,10 +2,7 @@
 title: 'Project: Getting and Cleaning Data'
 author: "ctakamiya"
 date: "20 de agosto de 2014"
-output:
-  html_document:
-    fig_caption: yes
-    keep_md: yes
+ 
 ---
 
 #Introduction
